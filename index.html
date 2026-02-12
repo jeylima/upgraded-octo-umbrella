@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portas Lisas Premium | Gestão de Orçamentos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Gestão Comercial</p>
+        <h1>Portas Lisas Premium</h1>
+      </div>
+      <p class="header-date" id="headerDate"></p>
+    </header>
+
+    <main class="layout">
+      <section class="panel" aria-labelledby="clientesTitulo">
+        <div class="panel-title-row">
+          <h2 id="clientesTitulo">Clientes</h2>
+          <button class="secondary" id="toggleClientFormBtn">Novo cliente</button>
+        </div>
+
+        <form id="clientForm" class="form hidden" autocomplete="off">
+          <label>
+            Nome
+            <input type="text" id="clientName" required />
+          </label>
+          <label>
+            Telefone
+            <input type="tel" id="clientPhone" required />
+          </label>
+          <label>
+            Localização
+            <input type="text" id="clientLocation" required />
+          </label>
+          <label>
+            Observações
+            <textarea id="clientNotes" rows="2" placeholder="Acesso, preferências, detalhes..."></textarea>
+          </label>
+          <button type="submit">Guardar cliente</button>
+        </form>
+
+        <div class="client-list" id="clientList"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="orcamentoTitulo">
+        <div class="panel-title-row">
+          <h2 id="orcamentoTitulo">Orçamento</h2>
+          <span class="chip" id="selectedClientLabel">Sem cliente selecionado</span>
+        </div>
+
+        <form id="quoteForm" class="form" autocomplete="off">
+          <label>
+            Preço por m² (€)
+            <input type="number" min="0" step="0.01" id="pricePerM2" value="65.00" required />
+          </label>
+
+          <div class="door-section">
+            <div class="panel-title-row">
+              <h3>Portas</h3>
+              <button type="button" class="secondary" id="addDoorBtn">Adicionar porta</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Largura (mm)</th>
+                    <th>Altura (mm)</th>
+                    <th>Qtd.</th>
+                    <th>Área (m²)</th>
+                    <th>Subtotal (€)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="doorRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="totals">
+            <div>
+              <span>Área total</span>
+              <strong id="totalArea">0.00 m²</strong>
+            </div>
+            <div>
+              <span>Total geral</span>
+              <strong id="grandTotal">€ 0.00</strong>
+            </div>
+          </div>
+
+          <button type="submit">Guardar orçamento</button>
+        </form>
+
+        <div class="quotes-history">
+          <h3>Histórico de orçamentos do cliente</h3>
+          <div id="quoteHistory"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel preview" aria-labelledby="previewTitulo">
+      <div class="panel-title-row">
+        <h2 id="previewTitulo">Visualização do orçamento</h2>
+        <button id="printPdfBtn">Gerar PDF</button>
+      </div>
+
+      <article id="printableQuote" class="printable">
+        <header>
+          <h3>Portas Lisas Premium</h3>
+          <p>Orçamento comercial</p>
+          <p id="previewDate"></p>
+        </header>
+
+        <section class="customer-summary">
+          <h4>Cliente</h4>
+          <p id="previewClient">Selecione um cliente para começar.</p>
+        </section>
+
+        <section>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Largura (mm)</th>
+                <th>Altura (mm)</th>
+                <th>Qtd.</th>
+                <th>Área (m²)</th>
+                <th>Subtotal (€)</th>
+              </tr>
+            </thead>
+            <tbody id="previewRows"></tbody>
+          </table>
+        </section>
+
+        <footer>
+          <div>
+            <p>Total</p>
+            <strong id="previewTotal">€ 0.00</strong>
+          </div>
+          <div class="signature-block">
+            <p>Assinatura</p>
+            <div class="signature-line"></div>
+          </div>
+        </footer>
+      </article>
+    </section>
+
+    <template id="doorRowTemplate">
+      <tr>
+        <td><input type="number" min="1" step="1" class="door-width" required /></td>
+        <td><input type="number" min="1" step="1" class="door-height" required /></td>
+        <td><input type="number" min="1" step="1" class="door-qty" value="1" required /></td>
+        <td class="row-area">0.00</td>
+        <td class="row-subtotal">0.00</td>
+        <td><button type="button" class="danger remove-row">Remover</button></td>
+      </tr>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
