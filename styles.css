@@ -1,0 +1,272 @@
+:root {
+  --bg: #f7f7f5;
+  --panel: #ffffff;
+  --line: #e3e2de;
+  --text: #171717;
+  --muted: #686868;
+  --accent: #201b17;
+  --danger: #7b2d2d;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #fbfbf9 0%, #f3f2ef 100%);
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.header-date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 7px 28px rgba(0, 0, 0, 0.04);
+}
+
+.panel-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+button.secondary {
+  background: #ece9e3;
+  color: var(--text);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+.hidden {
+  display: none;
+}
+
+.client-list,
+#quoteHistory {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.client-card,
+.quote-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.7rem;
+  background: #fafaf9;
+}
+
+.client-card.active {
+  border-color: #9f8975;
+  background: #f2eee8;
+}
+
+.client-card button {
+  margin-top: 0.55rem;
+  width: 100%;
+}
+
+.chip {
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: #f0efeb;
+  border-radius: 100px;
+  padding: 0.2rem 0.55rem;
+}
+
+.door-section {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.7rem;
+  margin-block: 0.45rem;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  padding: 0.45rem 0.25rem;
+  font-size: 0.88rem;
+}
+
+.totals {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.totals div {
+  background: #f6f5f2;
+  border-radius: 10px;
+  padding: 0.55rem 0.75rem;
+  text-align: right;
+}
+
+.preview {
+  margin-top: 1rem;
+}
+
+.printable {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.printable header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.customer-summary {
+  margin-bottom: 0.7rem;
+}
+
+.printable footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.signature-block {
+  text-align: right;
+}
+
+.signature-line {
+  width: 160px;
+  border-bottom: 1px solid #555;
+  margin-top: 1.2rem;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+
+  .app-header,
+  .layout,
+  .panel.preview .panel-title-row {
+    display: none;
+  }
+
+  .panel.preview {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .printable {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
