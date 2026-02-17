@@ -1,4 +1,4 @@
-# Inicialização do Agente
+Inicialização do Agente
 Antes de qualquer tarefa você deve:
 1. Ler todos os arquivos dentro da pasta /docs
 2. Explicar como o sistema funciona
