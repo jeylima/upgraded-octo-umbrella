@@ -1,16 +1,13 @@
-# Decisões Técnicas do Projeto
+Decisões Técnicas do Projeto
 Este arquivo registra decisões permanentes.
 O agente deve consultá-lo antes de sugerir mudanças arquiteturais.
----
-## Arquitetura
+Arquitetura
 Usamos arquitetura em camadas:
 controller → service → repository
 Nunca acessar banco diretamente no controller.
----
-## Produto
+Produto
 O sistema NÃO permite móveis personalizados.
 Apenas módulos padrão.
----
-## Filosofia
+Filosofia
 Preferimos simplicidade a flexibilidade.
 Evitar abstrações desnecessárias.
