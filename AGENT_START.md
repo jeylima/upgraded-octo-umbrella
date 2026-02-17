@@ -5,4 +5,5 @@ Antes de qualquer tarefa você deve:
 3. Explicar o impacto da tarefa pedida
 4. Criar um plano passo a passo
 5. Aguardar confirmação
+6. Ler também a pasta /knowledge antes de planejar
 Nunca implementar diretamente sem planejamento.
