@@ -11,3 +11,5 @@ Apenas módulos padrão.
 Filosofia
 Preferimos simplicidade a flexibilidade.
 Evitar abstrações desnecessárias.
+Não usar GraphQL neste projeto.
+REST é obrigatório.
