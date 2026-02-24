@@ -1,18 +1,19 @@
-type Lead = {
-  id: string;
-  typology: string;
-  created_at: Date;
-};
-
-export const leads: Lead[] = [];
+import { db } from "../../../database/connection.js";
 
 export function createLead(typology: string) {
-  const lead = {
-    id: crypto.randomUUID(),
-    typology,
-    created_at: new Date(),
-  };
+  const stmt = db.prepare(`
+    INSERT INTO leads (typology)
+    VALUES (?)
+  `);
 
-  leads.push(lead);
-  return lead;
+  stmt.run(typology);
+}
+
+export function listLeads() {
+  const stmt = db.prepare(`
+    SELECT * FROM leads
+    ORDER BY created_at DESC
+  `);
+
+  return stmt.all();
 }
