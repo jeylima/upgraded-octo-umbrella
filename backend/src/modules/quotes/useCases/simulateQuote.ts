@@ -1,3 +1,5 @@
+import { createLead } from "../repository/inMemoryLeads.js";
+
 type Typology = "T1" | "T2" | "T3";
 
 const PRICE_TABLE: Record<Typology, number> = {
@@ -12,6 +14,8 @@ export function simulateQuote(typology: Typology) {
   if (!price) {
     throw new Error("Invalid typology");
   }
+
+createLead(typology);
 
   return {
     typology,
